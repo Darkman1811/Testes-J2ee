@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml" fx:controller="sample.Controller">
+    
+        <Label layoutX="126" layoutY="120" minHeight="16" minWidth="69" fx:id="firstLabel" text="I love bacon"/>
+        <Label text="${firstLabel.text}"/> 
+        
+        <fx:define>
+            <ToggleGroup fx:id="toggleGroup"/>
+        
+        </fx:define>
+        
+        <Label text="Diffuculty" />
+        <RadioButton text="Easy" toggleGroup="$toggleGroup"/>
+        <RadioButton text="Medium" toggleGroup="$toggleGroup"/>
+        <RadioButton text="Hard" toggleGroup="$toggleGroup"/>
+        
+        <Button layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
+    
+    
+</VBox>
