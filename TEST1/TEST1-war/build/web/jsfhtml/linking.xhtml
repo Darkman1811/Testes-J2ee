@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>Formulaire creation edudiant</div>
+        <f:view>
+            <h:form>
+                <h:panelGrid columns="2">
+                
+                <h:outputLabel value="Prenom" />
+                <h:inputText value="#{studentBackingBean.prenom}" />
+                
+                <h:outputLabel value="Nom" />
+                <h:inputText value="#{studentBackingBean.nom}" />
+                
+                <h:outputLabel value="Age" />
+                <h:inputText value="#{studentBackingBean.age}" />
+                
+                <h:outputLabel value="Date debut" />
+                <h:inputText value="#{studentBackingBean.dateDebut}">
+                    <f:convertDateTime dateStyle="short"/>
+                </h:inputText>
+                
+                 <h:outputLabel value="Select One"/>
+                <h:selectOneListbox value="#{studentBackingBean.selectedHuman}"  >
+                    <f:selectItems value="#{studentBackingBean.humain}" var="lst" itemValue="#{lst.id}" itemLabel="#{lst.id}" />
+                </h:selectOneListbox>
+                
+                  <h:outputLabel value="Select Many"/>
+                <h:selectManyListbox value="#{studentBackingBean.listselectedHuman}"  >
+                    <f:selectItems value="#{studentBackingBean.humain}" var="lst" itemValue="#{lst.id}" itemLabel="#{lst.id}" />
+                                       
+                </h:selectManyListbox>
+                
+                </h:panelGrid>
+                <h:outputLabel value="Nombre d'elements: #{studentBackingBean.taille}"  />  
+                <h:dataTable value="#{studentBackingBean.humain}" var="itme" >
+                    <h:column> <h:outputText value="#{itme.id}" /></h:column>
+                    <h:column> <h:outputText value="#{itme.prenom}" /> </h:column>
+                   <h:column> <h:outputText value="#{itme.nom}" /> </h:column>
+                    
+                    
+                </h:dataTable>
+                <h:commandButton action="#{studentBackingBean.ajouter()}" value="Ajouter" />
+            </h:form>
+            <h:outputLabel value="#{studentBackingBean.message}"/>
+        </f:view>
+    </body>
+</html>

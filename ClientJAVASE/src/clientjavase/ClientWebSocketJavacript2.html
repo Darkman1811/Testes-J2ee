@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+   <title>Web Socket Tutotrial 1</title>
+   <script language="javascript" type="text/javascript">
+    
+   
+     var wsUri = "ws://localhost:8080/TEST1-war/chat2";
+     var websocket = new WebSocket(wsUri);
+     
+     websocket.onmessage = function (message) { traiterMessage(message);};
+     websocket.onerror = function (message) {traiterErreur(message);};
+     websocket.onclose= function(message){ traiterFermer(message);};
+     websocket.onopen=function(message){ connecter(message);};
+     
+     
+       //---------------------------------------------------------
+        function envoyerMessage() {
+     if(textMessage.value!="close"){
+         websocket.send(textMessage.value);
+        // messagesTextAera.value+=textMessage.value+"\n";
+         textMessage.value="";
+     } else websocket.close();
+     
+    }
+    function traiterMessage(message) {
+     if(message.data!=null){  messagesTextAera.value+=message.data;}
+    }
+    
+    function traiterErreur(message) {
+     messagesTextAera.value+="Erreur...";
+    }
+    
+    function traiterFermer(message) {
+     websocket.send("client disconnected...");
+     messagesTextAera.value+="Server Disconnected... \n"
+    }
+    
+    function connecter(message) {
+     messagesTextAera.value+="Connection au serveur... \n";
+    }
+   //-----------------------------------------------------------
+   // window.addEventListener("load", init, false);
+   </script>
+   
+   
+  </head>
+ <body>
+     <form>
+     <input id="textMessage" type="text">
+     <input onclick="envoyerMessage();" value="Send Message" type="button">
+     </form>
+     <br> <textarea id="messagesTextAera" rows="10" cols="50"></textarea>
+ </body>
+</html>

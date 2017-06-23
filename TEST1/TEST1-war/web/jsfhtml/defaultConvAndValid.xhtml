@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>TODO supply a title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <div>Validators</div>   <br/>
+        <f:view>
+            <h:form>
+                <h:panelGrid columns="2">
+                
+                    <h:outputLabel value="f:validateRequired"/>
+                <h:inputText >
+                    <f:validateRequired/>
+                </h:inputText>
+                
+                <h:outputLabel value="f:validateDoubleRange"/>
+                <h:inputText >
+                    <f:validateDoubleRange minimum="18" maximum="30"/>
+                </h:inputText>
+                
+                <h:outputLabel value="f:validateLength"/>
+                <h:inputText >
+                    <f:validateLength minimum="3" maximum="5"/>
+                </h:inputText>
+                
+                <h:outputLabel value="f:validateRegex"/>
+                <h:inputText >
+                    <f:validateRegex pattern=""/>
+                </h:inputText>                              
+                
+                </h:panelGrid> 
+                <h:commandButton value="Valider" />
+            </h:form>
+              <br/><br/><br/>
+              <div>Converters</div>   <br/>
+              <h:form>
+                  <h:panelGrid columns="2">
+                      
+                      <h:outputLabel value="f:convertNumber "/>
+                      <h:inputText >
+                          <f:convertNumber integerOnly="true" />
+                      </h:inputText>
+
+                                            
+                      <h:outputLabel value="f:convertNumber maxFractionDigits minFractionDigits"/>
+                      <h:inputText >
+                          <f:convertNumber integerOnly="false" maxFractionDigits="5" minFractionDigits="2"/> 
+                      </h:inputText>
+                      
+                      <h:outputLabel value="f:convertNumber percent"/>
+                      <h:inputText >
+                          <f:convertNumber type="percent"/>
+                      </h:inputText>
+                      
+                      <h:outputLabel value="f:convertNumber currency"/>
+                      <h:inputText  >
+                          <f:convertNumber type="currency" currencySymbol="Fcfa" currencyCode=""/>
+                      </h:inputText>                      
+
+                      
+                      <h:outputLabel value="f:convertDateTime date" />
+                      <h:inputText >
+                          <f:convertDateTime type="date"  dateStyle="short"/>
+                      </h:inputText>
+
+                     
+                      <h:outputLabel value="f:convertDateTime time"/>
+                      <h:inputText >
+                          <f:convertDateTime type="time" />
+                      </h:inputText>
+
+                     
+                      <h:outputLabel value="f:convertDateTime both"/> 
+                      <h:inputText > 
+                          <f:convertDateTime type="both" dateStyle="short" />
+                      </h:inputText>
+
+                       
+                  </h:panelGrid>
+                   <h:commandButton value="Valider" />
+              </h:form>
+        </f:view>
+    </body>
+</html>
